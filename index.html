@@ -202,8 +202,8 @@ const SLIDES = [
       <p>Welcome to the Dawgers Learning Portal. This course takes about 15 minutes. It is not timed, because Pack Resources believes in a supportive learning environment.</p>
       <p>Each module ends with a short knowledge check. You need to answer each question correctly to move on. Your first-try accuracy goes on your certificate, so please read carefully.</p>
       <p>Completion is required by <b>October 31, 2026</b>. Post your certificate in the server to be entered in the NX giveaway.</p>
-      <label for="nm"><b>Full name or IGN</b> (this goes on your certificate)</label>
-      <input type="text" id="nm" maxlength="28" autocomplete="off" placeholder="e.g. Mr Sniffa">`,
+      <label for="nm"><b>Nickname or IGN</b> (this goes on your certificate)</label>
+      <input type="text" id="nm" maxlength="28" autocomplete="off">`,
     after: () => { const n = $("nm"); n.value = st.name || ""; n.oninput = () => { st.name = n.value.trim(); save(); gateCheck(); }; },
     gate: () => !!st.name },
   { id: "m0-ack", mod: "m0", stk: "note", say: "This part is legally binding. Probably.", html: () => `
