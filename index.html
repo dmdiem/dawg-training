@@ -633,8 +633,22 @@ function verify(){
   };
 }
 
-if (location.hash === "#verify") verify(); else render();
-addEventListener("hashchange", () => location.hash === "#verify" ? verify() : render());
+/* ---------- hidden reset: open the page with #reset ---------- */
+function resetPage(){
+  $("rail").innerHTML = "";
+  $("card").innerHTML = `
+    <div class="eyebrow">HR only</div>
+    <h2>Reset this browser's training</h2>
+    <p>This wipes the saved progress on this device: name, answers, the phishing result, dog incidents and the certificate. The training starts over from page 1, and the phishing DM will show up again.</p>
+    <button class="btn" id="rgo" style="align-self:flex-start;background:var(--bad)">Wipe and start over</button>
+    <button class="btn ghost" id="rno" style="align-self:flex-start">Keep my progress</button>`;
+  const leave = () => { history.replaceState(null, "", location.pathname + location.search); render(); };
+  $("rgo").onclick = () => { try { localStorage.removeItem(KEY); } catch (e) {} st = { name: "", at: 0, first: {}, tries: {}, touches: 0, dm: null, done: false }; $("layer").innerHTML = ""; leave(); };
+  $("rno").onclick = leave;
+}
+const route = () => location.hash === "#verify" ? verify() : location.hash === "#reset" ? resetPage() : render();
+route();
+addEventListener("hashchange", route);
 </script>
 
 </body>
