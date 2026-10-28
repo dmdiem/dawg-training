@@ -313,7 +313,7 @@ const SLIDES = [
       <p>The message comes from someone you know because <b>their account was taken first</b>. That's why it works.</p>
       <div class="grid2">
         <div class="tile"><span class="do">Do</span><p>Ask them somewhere else (in the server, in VC, by text) if they really sent it. Report the message.</p></div>
-        <div class="tile"><span class="dont">Don't</span><p>Click, download, or "log in with Discord" on any link a friend randomly sends you, even if they say please.</p></div>
+        <div class="tile"><span class="dont">Don't</span><p>Click, download, or "log in with Discord" on any link a friend randomly sends you, even if they say please. The link can look like a site you trust, like mapledoro.com, and still take you somewhere else.</p></div>
       </div>
       <div class="callout"><b>If you clicked:</b> change your password, turn on two-factor authentication, log out of all devices in Discord settings, and warn your friends.</div>` },
   { id: "m3-pw", mod: "m3", stk: "think", say: "IKannaNotSry is a name, not a password.", html: () => `
@@ -446,7 +446,7 @@ function showDM(){
       <div class="dh">${DM_AVATAR ? `<img class="av" src="${DM_AVATAR}" alt="">` : `<div class="av">${esc(DM_FROM[0])}</div>`}<div><b style="color:#fff">${esc(DM_FROM)}</b><br><span style="opacity:.7">Direct message &middot; just now</span></div><button class="x" id="dmx" aria-label="Close">&times;</button></div>
       <div class="db">
         <div>yo are u busy? i made a game with some friends and we need ppl to test it before launch 🙏 would mean a lot</div>
-        <div><a href="#" id="dml">https://dawgfall-playtest.gg/download</a></div>
+        <div><a href="#" id="dml">https://www.mapledoro.com/</a></div>
         <div class="embed"><b>Dawgfall: Early Access Playtest</b><span>Free playtest key. Download and log in with Discord to claim.</span></div>
       </div>
       <div class="acts"><button class="rep" id="dmr">Report</button><button class="ign" id="dmi">Ignore</button></div>
@@ -461,7 +461,7 @@ function pwned(){
   $("layer").innerHTML = `
     <div class="pwned" role="alertdialog" aria-label="Account compromised"><div>
       <h2>ACCOUNT COMPROMISED</h2>
-      <p>Your session token has been sent to dawgfall-playtest.gg. Your account is now messaging everyone on your friends list asking them to test a game.</p>
+      <p>That link said www.mapledoro.com, but it actually went to dawgfall-playtest.gg. Your session token has been sent there. Your account is now messaging everyone on your friends list asking them to test a game.</p>
       <p style="color:#fff">Just kidding. This was a HR phishing simulation. Nothing happened to your account.</p>
       <p>It will, however, appear on your certificate.</p>
       <button class="btn" id="pwok">I have learned my lesson</button>
@@ -472,7 +472,7 @@ function simReveal(){
   const r = st.dm;
   const head = `<div class="eyebrow">Module 4 &middot; Information Security</div><h2>Surprise: that was a test</h2>`;
   const what = `<p>During Module 3, you got a DM from "${esc(DM_FROM)}" asking you to test a game. That message was a phishing simulation run by HR. ${esc(DM_FROM)} did not send it, and was not consulted.</p>`;
-  if (r === "clicked") return head + what + `<div class="callout bad"><b>Result: you clicked the link.</b> In real life, your Discord account would now belong to someone else and be sending this same message to all of your friends. This result will appear on your certificate.</div>`;
+  if (r === "clicked") return head + what + `<div class="callout bad"><b>Result: you clicked the link.</b> The link looked like www.mapledoro.com, a site you probably trust, but scam messages can show one address and send you somewhere else. In real life, your Discord account would now belong to someone else and be sending this same message to all of your friends. This result will appear on your certificate.</div>`;
   if (r === "reported") return head + what + `<div class="callout good"><b>Result: you reported it.</b> Excellent instincts. This result will appear on your certificate, proudly.</div>`;
   if (r === "ignored") return head + what + `<div class="callout good"><b>Result: you ignored it.</b> You didn't fall for it. Next time, also report it and warn the friend whose account sent it.</div>`;
   return head + `<p>During Module 3, HR tried to send you a phishing DM, but you moved on before it arrived. Fast reader. It will show as "not received" on your certificate.</p>`;
