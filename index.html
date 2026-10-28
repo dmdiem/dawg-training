@@ -131,7 +131,7 @@ input[type=text]{font:inherit;width:100%;max-width:420px;padding:11px 12px;borde
 </head>
 <body>
 <header class="top"><div class="top-in">
-  <div class="portal">Dawgers Learning Portal<small>Department of Pack Resources</small></div>
+  <div class="portal">Dawgers Learning Portal<small>Department of Human Resources</small></div>
   <div class="who"><span id="who">Not signed in</span><div class="bar"><i id="pbar" style="width:0%"></i></div></div>
 </div></header>
 <div class="main">
@@ -179,7 +179,7 @@ const CHECKS = {
   ],
   m2: [
     C("What are Tyler's pronouns?", ["buff/kanna", "he/him", "kanna/buff"], 0, "Correct. buff/kanna. The order matters."),
-    C("Asley used to go by bussy/eater. When someone's pronouns change, you should:", ["Update your records and use the new ones", "Keep using the old ones because they were funnier", "Use both, just to be safe"], 0, "Correct. Pack Resources acknowledges the old ones were funnier. Use the new ones anyway.")
+    C("Asley used to go by bussy/eater. When someone's pronouns change, you should:", ["Update your records and use the new ones", "Keep using the old ones because they were funnier", "Use both, just to be safe"], 0, "Correct. HR acknowledges the old ones were funnier. Use the new ones anyway.")
   ],
   m3: [
     C("A friend DMs you: 'hey can u test my game? need feedback' with a link. What do you do?", ["Don't click. Check with them somewhere else, like in the server or VC.", "Click it. They are your friend.", "Download it, but only run it once"], 0, "Correct. Their account is probably compromised. Scammers send this from real friends' accounts."),
@@ -190,7 +190,7 @@ const CHECKS = {
     C("How much soundboard use is acceptable in VC?", ["Some, in moderation", "None, ever", "As much as you want, as long as it's funny to you"], 0, "Correct. A well-timed sound is good for morale. A spammed one is not."),
     C("Someone has been sitting in VC on mute all night. You should:", ["Let them be. Lurking is a valid way to participate.", "Keep asking them to unmute until they do", "Soundboard at them until they respond"], 0, "Correct. Nobody is forced off mute here."),
     C("Rodney has to leave unexpectedly. The approved offboarding phrase is:", ["KIGB", "FUDB", "vibye"], 0, "Correct. KIGB is the approved procedure."),
-    C("Before eating a Costco chicken bake, a responsible Dawg should:", ["Know where the nearest bathroom is", "Eat two to be safe", "Share it with Tyler"], 0, "Correct. Pack Resources has a documented case study.")
+    C("Before eating a Costco chicken bake, a responsible Dawg should:", ["Know where the nearest bathroom is", "Eat two to be safe", "Share it with Tyler"], 0, "Correct. HR has a documented case study.")
   ]
 };
 
@@ -199,7 +199,7 @@ const SLIDES = [
   { id: "m0-sign", mod: "m0", stk: "teach", say: "Hi. I'm your facilitator. Please don't touch me.", html: () => `
       <div class="eyebrow">Course DWG-101 &middot; Mandatory</div>
       <h1>Annual Inclusivity &amp; Information Security Training</h1>
-      <p>Welcome to the Dawgers Learning Portal. This course takes about 15 minutes. It is not timed, because Pack Resources believes in a supportive learning environment.</p>
+      <p>Welcome to the Dawgers Learning Portal. This course takes about 15 minutes. It is not timed, because HR believes in a supportive learning environment.</p>
       <p>Each module ends with a short knowledge check. You need to answer each question correctly to move on. Your first-try accuracy goes on your certificate, so please read carefully.</p>
       <p>Completion is required by <b>October 31, 2026</b>. Post your certificate in the server to be entered in the NX giveaway.</p>
       <label for="nm"><b>Nickname or IGN</b> (this goes on your certificate)</label>
@@ -220,15 +220,15 @@ const SLIDES = [
   { id: "m0-code", mod: "m0", stk: "teach", say: "Please read this carefully. There is a knowledge check right after.", html: () => `
       <div class="eyebrow">Module 1 &middot; Welcome &amp; Pack Values</div>
       <h2>Code of Conduct</h2>
-      <p>Our Code of Conduct applies to everyone in the server, Dawg or guest. It is short, because Pack Resources trusts you.</p>
+      <p>Our Code of Conduct applies to everyone in the server, Dawg or guest. It is short, because HR trusts you.</p>
       <div class="callout"><b>Section 1.1: Respect.</b> Please be respectful of everyone in this server.</div>
       <div class="callout"><b>Section 1.2: Confidentiality.</b> What happens in this server stays in this server. This includes the VC incident covered in Module 5.</div>
       <h2 style="font-size:20px">Tips to thrive</h2>
       <div class="grid2">
-        <div class="tile"><h4>Express yourself</h4><p>You're free to change your server nickname to whatever you want. Pack Resources fully supports your journey.</p></div>
+        <div class="tile"><h4>Express yourself</h4><p>You're free to change your server nickname to whatever you want. HR fully supports your journey.</p></div>
         <div class="tile"><h4>Grow your access</h4><p>Pick up some roles in #roles to unlock more channels. This is our career development program.</p></div>
         <div class="tile"><h4>Protect your peace</h4><p>Mute #bot-this-party. Notification boundaries are a form of self-care.</p></div>
-        <div class="tile"><h4>Get support</h4><p>Need help? Message any Boss Babe. Boss Babes are your Pack Resources business partners.</p></div>
+        <div class="tile"><h4>Get support</h4><p>Need help? Message any Boss Babe. Boss Babes are your HR business partners.</p></div>
         <div class="tile"><h4>Build connections</h4><p>Come hang out with us in VC!</p></div>
       </div>` },
   { id: "m0-check", mod: "m0", check: "m0" },
@@ -237,8 +237,8 @@ const SLIDES = [
       <div class="eyebrow">Module 2 &middot; Inclusivity &amp; Belonging</div>
       <h2>Supporting our minority members</h2>
       <p>Dawgers is a diverse pack. But our internal demographic data shows that some groups are underrepresented.</p>
-      <div class="callout"><b>Case study: Pookie.</b> Pookie is white. In a Discord that is overwhelmingly Asian, this makes him a minority. Pookie also doesn't play modern MapleStory, in a MapleStory server. Pack Resources recognises this as intersectionality.</div>
-      <div class="callout good"><b>Caveat.</b> Pookie does play MapleStory Classic. Pack Resources has reviewed this and confirms that it counts. Mostly.</div>
+      <div class="callout"><b>Case study: Pookie.</b> Pookie is white. In a Discord that is overwhelmingly Asian, this makes him a minority. Pookie also doesn't play modern MapleStory, in a MapleStory server. HR recognises this as intersectionality.</div>
+      <div class="callout good"><b>Caveat.</b> Pookie does play MapleStory Classic. HR has reviewed this and confirms that it counts. Mostly.</div>
       <div class="grid2">
         <div class="tile"><span class="do">Do</span><p>Include Pookie in topics he can contribute to, such as pickleball, beating grannies at pickleball, and his new Honda Fit.</p></div>
         <div class="tile"><span class="dont">Don't</span><p>Ask Pookie to speak on behalf of all white people. He is one guy. He cannot be expected to represent everyone.</p></div>
@@ -253,14 +253,14 @@ const SLIDES = [
         <div class="tile"><span class="do">Do</span><p>Say hi when a guest joins VC. Invite them to runs. Explain the inside jokes, or at least some of them.</p></div>
         <div class="tile"><span class="dont">Don't</span><p>Go 40 minutes deep into Dawg lore without stopping to explain what KIGB means.</p></div>
         <div class="tile"><span class="do">Do</span><p>Treat guests the way you'd want to be treated in someone else's server.</p></div>
-        <div class="tile"><span class="dont">Don't</span><p>Ask "who invited you?". Pack Resources considers this unwelcoming, even when you genuinely want to know.</p></div>
+        <div class="tile"><span class="dont">Don't</span><p>Ask "who invited you?". HR considers this unwelcoming, even when you genuinely want to know.</p></div>
       </div>` },
   { id: "m1-check", mod: "m1", check: "m1" },
 
   { id: "m2-names", mod: "m2", stk: "teach", say: "Hi, I'm your facilitator, and my pronouns are woof/woof.", html: () => `
       <div class="eyebrow">Module 3 &middot; Pronouns</div>
       <h2>Sharing your pronouns</h2>
-      <p>Pack Resources encourages every Dawg to share their pronouns. Using someone's correct pronouns is a basic part of belonging, and it's on your certificate now, so take this seriously.</p>
+      <p>HR encourages every Dawg to share their pronouns. Using someone's correct pronouns is a basic part of belonging, and it's on your certificate now, so take this seriously.</p>
       <div class="grid2">
         <div class="tile"><h4>Tyler</h4><p>Pronouns: <b>buff/kanna</b>. Please use them in all boss runs and party chat.</p></div>
         <div class="tile"><h4>Asley</h4><p>Pronouns were: <b>bussy/eater</b>. Pronouns can change. If you're not sure what someone uses now, ask.</p></div>
@@ -332,15 +332,15 @@ const SLIDES = [
       <p>Voice channels are a shared workspace. Everything you transmit, you transmit to the whole pack.</p>
       <div class="callout bad"><b>Incident report #VC-001.</b> Someone farted in VC. Following a thorough investigation, the responsible party was identified as Jums. The case is closed. The memory is not.</div>
       <div class="grid2">
-        <div class="tile"><span class="do">Do</span><p>Use the soundboard. In moderation. One well-timed sound is comedy. Twelve in a row is a Pack Resources matter.</p></div>
+        <div class="tile"><span class="do">Do</span><p>Use the soundboard. In moderation. One well-timed sound is comedy. Twelve in a row is a HR matter.</p></div>
         <div class="tile"><span class="dont">Don't</span><p>Spam the soundboard. Nobody needs the same clip played over and over during a boss run.</p></div>
         <div class="tile"><span class="dont">Don't</span><p>Force anyone to come off mute. Lurking in VC is a valid way to participate.</p></div>
       </div>` },
   { id: "m4-leave", mod: "m4", stk: "bow", say: "Goodbyes are important. Short goodbyes are more important.", html: () => `
       <div class="eyebrow">Module 5 &middot; Workplace Conduct</div>
       <h2>Offboarding and food safety</h2>
-      <p><b>Leaving unexpectedly.</b> Disappearing without a word causes confusion and an empty boss slot. Pack Resources has adopted Rodney's standard: say <b>KIGB</b> and go. No further paperwork is required.</p>
-      <p><b>Food safety.</b> In a well-documented case, a Costco chicken bake sent Tyler to the bathroom almost immediately. Pack Resources recommends knowing your exits before eating anything from a food court.</p>
+      <p><b>Leaving unexpectedly.</b> Disappearing without a word causes confusion and an empty boss slot. HR has adopted Rodney's standard: say <b>KIGB</b> and go. No further paperwork is required.</p>
+      <p><b>Food safety.</b> In a well-documented case, a Costco chicken bake sent Tyler to the bathroom almost immediately. HR recommends knowing your exits before eating anything from a food court.</p>
       <div class="callout"><b>Reminder:</b> the dog's boundaries are still in effect for this module.</div>` },
   { id: "m4-check", mod: "m4", check: "m4" },
 
@@ -393,7 +393,7 @@ function canGo(){
 function gateCheck(){ const n = $("next"); if (n) n.disabled = !canGo(); }
 
 /* ---------- the dog ---------- */
-const DOG = ["Please don't touch me.", "I said please don't touch me.", "This is being logged.", "Pack Resources has been notified.", "Do you not understand Dawg?", "Every touch goes on your certificate.", "Hands. Off.", "I'm filing a formal complaint."];
+const DOG = ["Please don't touch me.", "I said please don't touch me.", "This is being logged.", "HR has been notified.", "Do you not understand Dawg?", "Every touch goes on your certificate.", "Hands. Off.", "I'm filing a formal complaint."];
 function touchDog(){
   st.touches = (st.touches || 0) + 1; save();
   $("dog").src = STK[pick(["no", "unimpressed", "annoyed"])];
@@ -429,7 +429,7 @@ function bindCheck(mod){
       const o = +b.dataset.o;
       if (!(key in st.first)) st.first[key] = o === c.a;
       if (o === c.a) t.solved = true;
-      else { t.wrong.push(o); fb.className = "fb wrong"; fb.textContent = pick(["Incorrect. Please review the material and try again.", "That is not consistent with Dawgers policy. Try again.", "Incorrect. Pack Resources is disappointed but supportive.", "Incorrect. This has been noted."]); }
+      else { t.wrong.push(o); fb.className = "fb wrong"; fb.textContent = pick(["Incorrect. Please review the material and try again.", "That is not consistent with Dawgers policy. Try again.", "Incorrect. HR is disappointed but supportive.", "Incorrect. This has been noted."]); }
       save(); paint(); gateCheck();
     });
     paint();
@@ -460,7 +460,7 @@ function pwned(){
     <div class="pwned" role="alertdialog" aria-label="Account compromised"><div>
       <h2>ACCOUNT COMPROMISED</h2>
       <p>Your session token has been sent to dawgfall-playtest.gg. Your account is now messaging everyone on your friends list asking them to test a game.</p>
-      <p style="color:#fff">Just kidding. This was a Pack Resources phishing simulation. Nothing happened to your account.</p>
+      <p style="color:#fff">Just kidding. This was a HR phishing simulation. Nothing happened to your account.</p>
       <p>It will, however, appear on your certificate.</p>
       <button class="btn" id="pwok">I have learned my lesson</button>
     </div></div>`;
@@ -469,11 +469,11 @@ function pwned(){
 function simReveal(){
   const r = st.dm;
   const head = `<div class="eyebrow">Module 4 &middot; Information Security</div><h2>Surprise: that was a test</h2>`;
-  const what = `<p>During Module 3, you got a DM from "${esc(DM_FROM)}" asking you to test a game. That message was a phishing simulation run by Pack Resources. ${esc(DM_FROM)} did not send it, and was not consulted.</p>`;
+  const what = `<p>During Module 3, you got a DM from "${esc(DM_FROM)}" asking you to test a game. That message was a phishing simulation run by HR. ${esc(DM_FROM)} did not send it, and was not consulted.</p>`;
   if (r === "clicked") return head + what + `<div class="callout bad"><b>Result: you clicked the link.</b> In real life, your Discord account would now belong to someone else and be sending this same message to all of your friends. This result will appear on your certificate.</div>`;
   if (r === "reported") return head + what + `<div class="callout good"><b>Result: you reported it.</b> Excellent instincts. This result will appear on your certificate, proudly.</div>`;
   if (r === "ignored") return head + what + `<div class="callout good"><b>Result: you ignored it.</b> You didn't fall for it. Next time, also report it and warn the friend whose account sent it.</div>`;
-  return head + `<p>During Module 3, Pack Resources tried to send you a phishing DM, but you moved on before it arrived. Fast reader. It will show as "not received" on your certificate.</p>`;
+  return head + `<p>During Module 3, HR tried to send you a phishing DM, but you moved on before it arrived. Fast reader. It will show as "not received" on your certificate.</p>`;
 }
 
 /* ---------- certificate ---------- */
@@ -506,7 +506,7 @@ function cert(){
   $("card").innerHTML = `
     <div class="fac"><img id="dog" src="${STK[st.dm === "clicked" ? "unimpressed" : "party"]}" alt="The facilitator, a plush dog."><div class="bubble" id="sb"><b>Your facilitator</b><span>${st.dm === "clicked" ? "You passed. Mostly. We need to talk about that link." : "Congratulations. You are now 100% compliant."}</span></div></div>
     <div class="cert">
-      <div class="seal">Pack<br>Resources<br>Approved</div>
+      <div class="seal">Human<br>Resources<br>Approved</div>
       <div class="eyebrow">Certificate of Completion</div>
       <div>This certifies that</div>
       <div class="nmrow"><div class="nm">${esc(st.name)}</div><img class="certdog" id="certdog" src="${STK[st.certDog]}" alt="A Dawg reacting to your score"></div>${st.pronouns ? `<div class="policy">(${esc(st.pronouns)})</div>` : ""}
@@ -515,7 +515,7 @@ function cert(){
         <tr><td>Completed</td><td>${esc(st.date || "")}</td></tr>
         <tr><td>Knowledge checks, first try</td><td>${fr} of ${TOTALQ} (${pct}%)</td></tr>
         <tr><td>Phishing simulation</td><td style="color:${st.dm === "clicked" ? "var(--bad)" : "var(--ink)"};font-weight:${st.dm === "clicked" ? 800 : 400}">${esc(DM_LABEL[st.dm || "none"])}${st.dm === "clicked" ? `<img class="phishdog" id="phishdog" src="${STK[PHISH_DOG]}" alt="A panicking Dawg">` : ""}</td></tr>
-        <tr><td>Dog touching incidents</td><td style="color:${touches ? "var(--bad)" : "var(--ink)"}">${touches}${touches >= 5 ? " (referred to Pack Resources)" : ""}</td></tr>
+        <tr><td>Dog touching incidents</td><td style="color:${touches ? "var(--bad)" : "var(--ink)"}">${touches}${touches >= 5 ? " (referred to HR)" : ""}</td></tr>
       </table>
       <div class="id">${certId()}</div>
       <div class="policy">Certificate ID</div>
@@ -570,7 +570,7 @@ async function certBlob(){
   // seal
   x.beginPath(); x.arc(W / 2, 150, 70, 0, Math.PI * 2); x.fillStyle = amber; x.fill();
   x.beginPath(); x.arc(W / 2, 150, 80, 0, Math.PI * 2); x.strokeStyle = amber; x.lineWidth = 3; x.stroke();
-  ["PACK", "RESOURCES", "APPROVED"].forEach((w, k) => t(w, 132 + k * 22, "800 17px " + sans, "#1d1205"));
+  ["HUMAN", "RESOURCES", "APPROVED"].forEach((w, k) => t(w, 132 + k * 22, "800 17px " + sans, "#1d1205"));
   // facilitator sticker in the corner
   t("CERTIFICATE OF COMPLETION", 280, "800 22px " + sans, amber);
   t("This certifies that", 340, "400 24px " + sans, ink);
@@ -584,7 +584,7 @@ async function certBlob(){
   if (st.pronouns) t("(" + st.pronouns + ")", y + 58, "500 20px " + mono, muted);
   y = wrap("has completed DWG-101: Annual Inclusivity & Information Security Training", y + 112, "700 26px " + sans, ink, W - 220, 36);
   const rows = [["Completed", st.date || "", ink], ["Knowledge checks, first try", firstRight() + " of " + TOTALQ + " (" + Math.round(firstRight() / TOTALQ * 100) + "%)", ink],
-    ["Phishing simulation", DM_LABEL[st.dm || "none"], st.dm === "clicked" ? bad : ink], ["Dog touching incidents", String(st.touches || 0) + ((st.touches || 0) >= 5 ? " (referred to Pack Resources)" : ""), (st.touches || 0) ? bad : ink]];
+    ["Phishing simulation", DM_LABEL[st.dm || "none"], st.dm === "clicked" ? bad : ink], ["Dog touching incidents", String(st.touches || 0) + ((st.touches || 0) >= 5 ? " (referred to HR)" : ""), (st.touches || 0) ? bad : ink]];
   y += 70; x.textAlign = "left";
   rows.forEach(([k, v, col]) => {
     x.font = "400 22px " + sans; x.fillStyle = muted; x.fillText(k, 170, y);
@@ -598,7 +598,7 @@ async function certBlob(){
   x.setLineDash([8, 6]); x.strokeStyle = amber; x.lineWidth = 2; x.strokeRect(W / 2 - iw / 2, y - 44, iw, 64); x.setLineDash([]);
   t(id, y, "500 34px " + mono, ink);
   t("Certificate ID", y + 52, "500 16px " + mono, muted);
-  t("Dawgers Learning Portal \u00b7 Department of Pack Resources", H - 64, "400 16px " + sans, muted);
+  t("Dawgers Learning Portal \u00b7 Department of Human Resources", H - 64, "400 16px " + sans, muted);
   return new Promise((ok, no) => c.toBlob(b => b ? ok(b) : no(new Error("no image")), "image/png"));
 }
 
@@ -606,7 +606,7 @@ async function certBlob(){
 function verify(){
   $("rail").innerHTML = "";
   $("card").innerHTML = `
-    <div class="eyebrow">Pack Resources only</div>
+    <div class="eyebrow">HR only</div>
     <h2>Verify a certificate</h2>
     <p>Copy the details from someone's certificate screenshot.</p>
     <input type="text" id="vn" placeholder="Name exactly as on the certificate" autocomplete="off">
