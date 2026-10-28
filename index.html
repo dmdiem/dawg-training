@@ -280,29 +280,30 @@ const SLIDES = [
       <p>This email landed in a Dawg's inbox. Tap every part that looks suspicious. <b id="flagct">0 of 5 found.</b></p>
       <div class="mail">
         <div class="hd">
-          <div><span class="policy">From:</span> <span class="flag" data-f="Nexxon is misspelled. It's Nexon with one x. Real companies spell their own name right.">Nexxon Support</span> &lt;<span class="flag" data-f="Look at the sender. 'nexon-acct-verify.biz' is not Nexon. Scammers use lookalike domains.">support@nexon-acct-verify.biz</span>&gt;</div>
+          <div><span class="policy">From:</span> <span class="flag" data-id="spell" data-f="Nexxon is misspelled. It's Nexon with one x. Real companies spell their own name right.">Nexxon Support</span> &lt;<span class="flag" data-id="domain" data-f="Look at the sender. 'nexon-acct-verify.biz' is not Nexon. Scammers use lookalike domains.">support@nexon-acct-verify.biz</span>&gt;</div>
           <div><span class="policy">Subject:</span> URGENT: Your character has been renamed to BasilSnobby</div>
         </div>
         <div class="bd">
-          <p><span class="flag" data-f="A generic greeting. Real support knows your name.">Dear Valued Maplestory Player,</span></p>
+          <p><span class="flag" data-id="greet" data-f="A generic greeting. Real support knows your name.">Dear Valued Maplestory Player,</span></p>
           <p>Our system has detected inappropriate activity on your account. Your character has been renamed to BasilSnobby.</p>
-          <p><span class="flag" data-f="Pressure and a deadline. Scams always rush you so you don't stop to think.">You must appeal within 24 hours or your account will be permanently deleted.</span></p>
-          <p>Log in to appeal: <span class="flag fake-link" data-f="The link goes to a strange site that wants your login. Never log in from a link in an email.">nexxon-appeal-login.biz/verify</span></p>
-          <p>Thank you,<br>Nexxon Account Team</p>
+          <p><span class="flag" data-id="rush" data-f="Pressure and a deadline. Scams always rush you so you don't stop to think.">You must appeal within 24 hours or your account will be permanently deleted.</span></p>
+          <p>Log in to appeal: <span class="flag fake-link" data-id="link" data-f="The link goes to a strange site that wants your login. Never log in from a link in an email.">nexxon-appeal-login.biz/verify</span></p>
+          <p>Thank you,<br><span class="flag" data-id="spell" data-f="Nexxon is misspelled. It's Nexon with one x. Real companies spell their own name right.">Nexxon</span> Account Team</p>
         </div>
       </div>
       <div class="fb" id="flagfb"></div>`,
     after: () => {
-      const found = new Set(st.flags || []);
+      // the same red flag can appear in more than one place (Nexxon is misspelled twice); finding either counts
+      const found = new Set((st.flags || []).filter(v => typeof v === "string"));
       const all = [...document.querySelectorAll(".flag")];
-      const upd = () => { $("flagct").textContent = found.size + " of 5 found."; gateCheck(); };
-      all.forEach((f, k) => {
-        if (found.has(k)) f.classList.add("found");
-        f.onclick = () => { found.add(k); f.classList.add("found"); st.flags = [...found]; save(); $("flagfb").innerHTML = `<div class="callout bad">${esc(f.dataset.f)}</div>`; upd(); };
+      const paint = () => all.forEach(f => f.classList.toggle("found", found.has(f.dataset.id)));
+      const upd = () => { paint(); $("flagct").textContent = found.size + " of 5 found."; gateCheck(); };
+      all.forEach(f => {
+        f.onclick = () => { found.add(f.dataset.id); st.flags = [...found]; save(); $("flagfb").innerHTML = `<div class="callout bad">${esc(f.dataset.f)}</div>`; upd(); };
       });
       upd();
     },
-    gate: () => (st.flags || []).length >= 5 },
+    gate: () => (st.flags || []).filter(v => typeof v === "string").length >= 5 },
   { id: "m3-game", mod: "m3", stk: "sweat", say: "This one is going around a lot right now.", html: () => `
       <div class="eyebrow">Module 4 &middot; Information Security</div>
       <h2>The "test my game" scam</h2>
