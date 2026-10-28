@@ -201,7 +201,6 @@ const SLIDES = [
       <h1>Annual Inclusivity &amp; Information Security Training</h1>
       <p>Welcome to the Dawgers Learning Portal. This course takes about 15 minutes. It is not timed, because HR believes in a supportive learning environment.</p>
       <p>Each module ends with a short knowledge check. You need to answer each question correctly to move on. Your first-try accuracy goes on your certificate, so please read carefully.</p>
-      <p>Completion is required by <b>October 31, 2026</b>. Post your certificate in the server to be entered in the NX giveaway.</p>
       <label for="nm"><b>Nickname or IGN</b> (this goes on your certificate)</label>
       <input type="text" id="nm" maxlength="28" autocomplete="off">`,
     after: () => { const n = $("nm"); n.value = st.name || ""; n.oninput = () => { st.name = n.value.trim(); save(); gateCheck(); }; },
@@ -522,7 +521,7 @@ function cert(){
     </div>
     <div class="certacts"><button class="btn" id="csave">Save certificate</button><button class="btn warm" id="ccopy">Copy certificate</button></div>
     <div class="fb" id="cmsg" role="status"></div>
-    <p>Save or copy your certificate and post it in the server to enter the giveaway. Copy puts the image on your clipboard so you can paste it straight into Discord. The certificate ID proves it's real.</p>
+    <p>Save or copy your certificate and post it in the server. Copy puts the image on your clipboard so you can paste it straight into Discord. The certificate ID proves it's real.</p>
     <div class="nav"><button class="btn ghost" id="back">Back</button><span class="step">Course complete</span><span></span></div>`;
   $("back").onclick = () => { st.at--; save(); render(); };
   $("dog").onclick = touchDog;
