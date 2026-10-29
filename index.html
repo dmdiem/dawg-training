@@ -116,6 +116,12 @@ input[type=text]{font:inherit;width:100%;max-width:420px;padding:11px 12px;borde
 .cert .id{font-family:var(--f-mono);font-size:18px;letter-spacing:.12em;padding:8px 14px;border:1px dashed var(--accent);border-radius:6px}
 .seal{width:84px;height:84px;border-radius:50%;background:var(--accent);color:#1d1205;display:grid;place-items:center;font-weight:800;font-size:11px;letter-spacing:.08em;line-height:1.2;text-transform:uppercase;box-shadow:0 0 0 4px var(--surface),0 0 0 6px var(--accent)}
 .certacts{display:flex;gap:10px;flex-wrap:wrap}.certacts .btn{flex:1 1 180px}
+.jail{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:10px 0}
+.jail h1{color:var(--bad)}
+.cell{position:relative;width:170px;height:170px;border-radius:12px;background:var(--sunk);border:3px solid var(--ink);display:grid;place-items:center;overflow:hidden}
+.cell img{height:130px;width:auto}
+.cell .bars{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 22px,var(--ink) 22px 30px)}
+.jail .clock{font-family:var(--f-mono);font-size:48px;color:var(--bad);font-variant-numeric:tabular-nums;line-height:1}
 .foot{text-align:center;font-size:12px;color:var(--muted);padding-bottom:20px}
 @media (max-width:760px){
   .main{grid-template-columns:minmax(0,1fr)}
@@ -360,6 +366,7 @@ const firstRight = () => Object.values(st.first).filter(v => v === true).length;
 
 /* ---------- render ---------- */
 function render(){
+  if (jailed()) return jail();
   const s = SLIDES[st.at];
   const mi = MODULES.findIndex(m => m.id === s.mod);
   $("rail").innerHTML = `<h3>Course outline</h3>` + MODULES.map((m, k) => `<div class="mod ${k === mi ? "on" : ""} ${k < mi || (st.done && k <= mi) ? "done" : ""}"><span class="dot">${k < mi ? "&#10003;" : k + 1}</span><span>${esc(m.name)}</span></div>`).join("");
@@ -395,11 +402,44 @@ function canGo(){
 function gateCheck(){ const n = $("next"); if (n) n.disabled = !canGo(); }
 
 /* ---------- the dog ---------- */
-const DOG = ["Please don't touch me.", "I said please don't touch me.", "This is being logged.", "HR has been notified.", "Do you not understand Dawg?", "Every touch goes on your certificate.", "Hands. Off.", "I'm filing a formal complaint."];
+const DOG = ["Please don't touch me.", "I said please don't touch me.", "This is being logged.", "One more and you're going to dog jail."];
+const DOG_AGAIN = ["You literally just got out.", "Do you want to go back?", "This is being logged. Again.", "One more and you're going back to dog jail."];
+const JAIL_EVERY = 5;          // every 5th touch sends you to dog jail
+const JAIL_MINUTES = 5;
 function touchDog(){
-  st.touches = (st.touches || 0) + 1; save();
+  st.touches = (st.touches || 0) + 1;
+  if (st.touches % JAIL_EVERY === 0) {
+    st.jails = (st.jails || 0) + 1; st.jailUntil = Date.now() + JAIL_MINUTES * 60000; save();
+    $("layer").innerHTML = ""; clearTimeout(dmTimer);
+    return jail();
+  }
+  save();
+  const lines = st.jails ? DOG_AGAIN : DOG;
   $("dog").src = STK[pick(["no", "unimpressed", "annoyed"])];
-  $("sb").innerHTML = `<b>Your facilitator</b><span style="color:var(--bad)">${esc(DOG[Math.min(st.touches, DOG.length) - 1])}</span>`;
+  $("sb").innerHTML = `<b>Your facilitator</b><span style="color:var(--bad)">${esc(lines[(st.touches % JAIL_EVERY) - 1])}</span>`;
+}
+const jailed = () => st.jailUntil && Date.now() < st.jailUntil;
+let jailTimer = null;
+function jail(){
+  clearInterval(jailTimer);
+  $("rail").innerHTML = "";
+  $("pbar").style.width = "0%";
+  $("card").innerHTML = `
+    <div class="jail">
+      <div class="eyebrow" style="color:var(--bad)">HR enforcement action</div>
+      <h1>Dog Jail</h1>
+      <div class="cell"><img src="${STK.wail}" alt="You, behind bars"><div class="bars"></div></div>
+      <p>You touched the dog ${st.touches} times. The dog asked you not to. HR has placed you in dog jail${st.jails > 1 ? ` (sentence #${st.jails})` : ""}.</p>
+      <div class="clock" id="jt" aria-live="polite"></div>
+      <p class="policy">Your training resumes when the sentence is served. Refreshing does not reduce your sentence. This incident will appear on your certificate.</p>
+    </div>`;
+  const tick = () => {
+    const left = Math.max(0, st.jailUntil - Date.now());
+    if (!left) { clearInterval(jailTimer); st.jailUntil = 0; save(); return render(); }
+    const m = Math.floor(left / 60000), sec = Math.floor(left / 1000) % 60;
+    $("jt").textContent = m + ":" + String(sec).padStart(2, "0");
+  };
+  tick(); jailTimer = setInterval(tick, 250);
 }
 
 /* ---------- knowledge checks ---------- */
@@ -440,7 +480,7 @@ function bindCheck(mod){
 
 /* ---------- the phishing simulation ---------- */
 function showDM(){
-  if (st.dm) return;
+  if (st.dm || jailed()) return;
   $("layer").innerHTML = `
     <div class="dm" role="dialog" aria-label="New direct message">
       <div class="dh">${DM_AVATAR ? `<img class="av" src="${DM_AVATAR}" alt="">` : `<div class="av">${esc(DM_FROM[0])}</div>`}<div><b style="color:#fff">${esc(DM_FROM)}</b><br><span style="opacity:.7">Direct message &middot; just now</span></div><button class="x" id="dmx" aria-label="Close">&times;</button></div>
@@ -517,7 +557,7 @@ function cert(){
         <tr><td>Completed</td><td>${esc(st.date || "")}</td></tr>
         <tr><td>Knowledge checks, first try</td><td>${fr} of ${TOTALQ} (${pct}%)</td></tr>
         <tr><td>Phishing simulation</td><td style="color:${st.dm === "clicked" ? "var(--bad)" : "var(--ink)"};font-weight:${st.dm === "clicked" ? 800 : 400}">${esc(DM_LABEL[st.dm || "none"])}${st.dm === "clicked" ? `<img class="phishdog" id="phishdog" src="${STK[PHISH_DOG]}" alt="A panicking Dawg">` : ""}</td></tr>
-        <tr><td>Dog touching incidents</td><td style="color:${touches ? "var(--bad)" : "var(--ink)"}">${touches}${touches >= 5 ? " (referred to HR)" : ""}</td></tr>
+        <tr><td>Dog touching incidents</td><td style="color:${touches ? "var(--bad)" : "var(--ink)"}">${touches}${st.jails ? ` (${st.jails} dog jail sentence${st.jails > 1 ? "s" : ""} served)` : ""}</td></tr>
       </table>
       <div class="id">${certId()}</div>
       <div class="policy">Certificate ID</div>
@@ -586,7 +626,7 @@ async function certBlob(){
   if (st.pronouns) t("(" + st.pronouns + ")", y + 58, "500 20px " + mono, muted);
   y = wrap("has completed DWG-101: Annual Inclusivity & Information Security Training", y + 112, "700 26px " + sans, ink, W - 220, 36);
   const rows = [["Completed", st.date || "", ink], ["Knowledge checks, first try", firstRight() + " of " + TOTALQ + " (" + Math.round(firstRight() / TOTALQ * 100) + "%)", ink],
-    ["Phishing simulation", DM_LABEL[st.dm || "none"], st.dm === "clicked" ? bad : ink], ["Dog touching incidents", String(st.touches || 0) + ((st.touches || 0) >= 5 ? " (referred to HR)" : ""), (st.touches || 0) ? bad : ink]];
+    ["Phishing simulation", DM_LABEL[st.dm || "none"], st.dm === "clicked" ? bad : ink], ["Dog touching incidents", String(st.touches || 0) + (st.jails ? " (" + st.jails + " dog jail sentence" + (st.jails > 1 ? "s" : "") + " served)" : ""), (st.touches || 0) ? bad : ink]];
   y += 70; x.textAlign = "left";
   rows.forEach(([k, v, col]) => {
     x.font = "400 22px " + sans; x.fillStyle = muted; x.fillText(k, 170, y);
